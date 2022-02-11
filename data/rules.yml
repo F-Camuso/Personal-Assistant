@@ -1,0 +1,40 @@
+version: "3.0"
+
+rules:
+
+
+- rule: oi
+  steps:
+  - intent: greet_intent
+  - action: action_greet
+
+- rule: usuario pede a musica q ta tocando
+  steps:
+  - intent: current_track_intent
+  - action: action_get_current_track
+
+
+- rule: pede acesso à api
+  steps:
+  - intent: request_access_intent
+  - action: action_access_spotify
+
+- rule: pede pra executar uma funcao
+  steps:
+  - intent: request_intent
+  - action: action_execute_function 
+
+- rule: pega codigo
+  steps:
+  - intent: say_code_intent
+  - action: action_connect_spotify
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot

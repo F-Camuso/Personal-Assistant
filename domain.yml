@@ -1,0 +1,83 @@
+version: "3.0"
+
+intents:
+  - greet_intent
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - say_code_intent
+  - request_access_intent
+  - request_intent
+  - current_track_intent
+
+actions:
+  - action_greet
+  - action_access_spotify
+  - action_connect_spotify
+  - action_execute_function
+  - action_get_current_track
+  
+entities:
+  - code_entity
+  - plataform_entity
+  - object_entity
+  - function_entity
+
+slots:
+
+  plataform_slot:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: plataform_entity
+
+  object_slot:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: object_entity
+
+  function_slot:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: function_entity
+
+  code_slot:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: code_entity
+
+responses:
+
+  utter_link:
+    - custom:
+        text: "[{link_name}]({link})"
+        parse_mode: markdown
+
+  utter_greet:
+  - text: "Hey! How are you?"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

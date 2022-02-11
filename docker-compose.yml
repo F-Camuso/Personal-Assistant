@@ -1,0 +1,52 @@
+version: '3'
+
+services:
+  # imagem do bot
+  rasa-bot: 
+    build: 
+      context: .
+      dockerfile: bot.Dockerfile
+    networks: 
+      - all
+    ports:
+      - 5005:5005
+    volumes:
+      - ./:/app
+     
+    public: true
+    command:
+      - run
+      - --enable-api
+      - --cors
+      - "*"
+    depends_on:
+      - rasa-bot-actions
+  # imagem do servidor de actions
+  rasa-bot-actions:
+    build:
+      context: .
+      dockerfile: server.Dockerfile
+
+    networks: 
+      - all
+    ports:
+      - "5055:5055"
+    volumes:
+      - "./actions:/app/actions"
+  # imagem do servidor js
+  js-server:
+    build:
+      context: .
+      dockerfile: js.Dockerfile
+    ports:
+      - 3000:3000
+    volumes:
+      - ./:/app
+    command:
+      - node
+      - server.js
+    depends_on:
+      - rasa-bot
+networks:
+  all:
+    driver: bridge    

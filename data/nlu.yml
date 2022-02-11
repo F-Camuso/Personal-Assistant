@@ -1,0 +1,47 @@
+version: "3.0"
+
+nlu:
+
+- intent: say_code_intent
+  examples: | 
+    - 2222-222-2222222222-2
+    - 2224242-2522-2222222222-2
+    - 2222-222-22042938122222222-2
+
+- intent: current_track_intent
+  examples: | 
+    - what's playing right now?
+    - show me the current music
+    - current music
+
+- intent: request_access_intent
+  examples: | 
+    - acesso ao [spotify](plataform_entity)
+    - acessar [spotify](plataform_entity)
+    - acesse [spotify](plataform_entity)
+    
+- intent: request_intent
+  examples: |
+    - [show](function_entity) [devices](object_entity)
+    - [show](function_entity) [playlists](object_entity)
+    - [show](function_entity) [current track](object_entity)
+    - [play](function_entity) [earl sweatshirt](artist_entity)
+    - [play](function_entity) a [playlist](object_entity)
+    - [play](function_entity) 
+    
+- intent: greet_intent
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
